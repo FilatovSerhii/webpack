@@ -1,0 +1,23 @@
+{
+  "name": "task2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:scripts": "babel ./src --out-dir=./dist",
+    "clean": "rm-rf ./distr",
+    "build": "npm-run-all clean build:* copy:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6"
+  },
+  "dependencies": {
+    "core-js": "^3.18.0"
+  }
+}
