@@ -1,3 +1,14 @@
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  background-color: blue;
+  border-radius: 8px;
+  padding: 8px;
+  max-width: 600px;
+  margin: auto;
+}
+
 .list {
   margin: 0;
   padding: 0;
@@ -18,12 +29,21 @@
   background-color: wheat;
   padding: 8px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &_done {
     opacity: 0.7;
 
-    .list-item__text {
+    &__text {
       text-decoration: line-through;
     }
+  }
+
+  &__checkbox {
+    margin-right: 8px;
+    text-decoration: line-through;
   }
 
   &__delete-btn {
@@ -33,7 +53,7 @@
     outline: none;
     cursor: pointer;
     background: transparent;
-    border: 0;
+    border: none;
     margin-left: auto;
     text-decoration: none;
     padding: 0;
@@ -44,15 +64,29 @@
     opacity: 0.7;
 
     &::before {
-      content: '+';
+      content: "+";
     }
-  }
-
-  &:last-child {
-    margin-bottom: 0;
   }
 }
 
-.list-item-checkbox {
-  margin-right: 8px;
+.btn {
+  height: 32px;
+  min-width: 64px;
+  border: 3px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-left: 16px;
+}
+
+.actions {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.task-input {
+  height: 32px;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  flex: 1;
 }

@@ -1,40 +1,34 @@
-/* eslint-disable import/no-cycle */
-import { getItem, setItem, baseUrl } from './storage.js';
-import { refreashList } from './tools.js';
+import { renderTasks } from "./renderer.js";
+import { getItem, setItem } from "./storage.js";
+import { createTask, getTasksList } from "./tasksGateway.js";
 
-export function createTask() {
-  const inputElem = document.querySelector('.task-input');
-  if (!inputElem.value) {
-    return null;
+export const onCreateTask = () => {
+  const inputTaskElem = document.querySelector(".task-input");
+
+  const text = inputTaskElem.value;
+
+  if (!text) {
+    return;
   }
 
-  setItem({
-    // id: Math.random().toString(),
-    date: Date.now(),
-    text: inputElem.value,
+  inputTaskElem.value = "";
+
+  const newTask = {
+    text,
     done: false,
-  }).then(_ => {
-    inputElem.value = '';
-    refreashList(getItem());
-  });
+    createDate: new Date().toISOString(),
+  };
 
-  return undefined;
-}
+  createTask(newTask)
+    .then(() => getTasksList())
+    .then((newTasksList) => {
+      setItem("tasksList", newTasksList);
+      renderTasks();
+    });
+};
 
-function deleteTask(userId) {
-  return fetch(`${baseUrl}/${userId}`, {
-    method: 'DELETE',
-  })
-    .then(response => response.json())
-    .then(_ => refreashList(getItem()));
-}
-
-export function createDeleteBtn() {
-  const deleteBtnElem = document.createElement('button');
-  deleteBtnElem.classList.add('list-item__delete-btn');
-  deleteBtnElem.addEventListener('click', () => deleteTask(deleteBtnElem.parentElement.dataset.id));
-  return deleteBtnElem;
-}
-
-const btnCreate = document.querySelector('.create-task-btn');
-btnCreate.addEventListener('click', createTask);
+// 1.Prepare data
+// 2. Write data to database
+// 3. Readnew data from server
+// 4. Save new data to front-end storage
+// 5. Updated UI based on new data
