@@ -1,7 +1,7 @@
 export const baseUrl = 'https://6141db7d4d16670017ba29f9.mockapi.io/api/v1/task';
 
 export function getItem() {
-  return fetch(baseUrl).then(response => response.json());
+  return fetch(baseUrl).then((response) => response.json());
 }
 
 export function setItem(userData) {
