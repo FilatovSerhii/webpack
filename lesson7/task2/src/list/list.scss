@@ -1,0 +1,58 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  margin: auto;
+  width: 100%;
+
+  &__item {
+    margin-bottom: 8px;
+  }
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 8px;
+  background-color: wheat;
+  padding: 8px;
+
+  &_done {
+    opacity: 0.7;
+
+    .list-item__text {
+      text-decoration: line-through;
+    }
+  }
+
+  &__delete-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    margin-left: auto;
+    text-decoration: none;
+    padding: 0;
+    transform: rotate(45deg);
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    opacity: 0.7;
+
+    &::before {
+      content: '+';
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.list-item-checkbox {
+  margin-right: 8px;
+}
