@@ -1,0 +1,17 @@
+/* file path: src/profile/profile.scss */
+
+.profile {
+  padding: 8px;
+  border-radius: 8px;
+  border: 3px solid #ccc;
+  background-color: #fff;
+
+  &__name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__location {
+    opacity: 0.7;
+  }
+}
